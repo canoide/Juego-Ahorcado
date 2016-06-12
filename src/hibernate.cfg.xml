@@ -19,7 +19,7 @@
     <property name="hbm2ddl.auto">create-drop</property>
     
     <!-- Archivos de mapeo -->
-    <mapping resource="hibernate/mapeos/mapeos/Contacto.hbm.xml"/>
+    <mapping resource="com/juegoahorcado/mapeos/Palabra.hbm.xml"/>
     
   </session-factory>
 </hibernate-configuration>

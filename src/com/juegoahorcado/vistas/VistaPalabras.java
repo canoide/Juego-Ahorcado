@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class MainForm {
+public class VistaPalabras {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class MainForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainForm window = new MainForm();
+					VistaPalabras window = new VistaPalabras();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -27,7 +27,7 @@ public class MainForm {
 	/**
 	 * Create the application.
 	 */
-	public MainForm() {
+	public VistaPalabras() {
 		initialize();
 	}
 

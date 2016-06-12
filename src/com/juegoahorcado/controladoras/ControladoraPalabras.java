@@ -1,5 +1,5 @@
 package com.juegoahorcado.controladoras;
 
-public class ControladoraHumano {
+public class ControladoraPalabras {
 
 }
