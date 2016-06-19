@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.juegoahorcado.modelos.Estadistica" table="ESTADISTICAS">
+		<id name="id" column="ID">
+			<generator class="identity" />
+		</id>
+		<property name="nombreJugador" type="string" column="NOMBREJUGADOR"/>
+		
+		
+		<list name="listaDetalles" cascade="all">
+		    <key column="ID"/>
+		    <list-index column="IDX" />
+		    <one-to-many class="com.juegoahorcado.modelos.DetalleJugador"/>
+		</list>
+		
+	</class>
+</hibernate-mapping>

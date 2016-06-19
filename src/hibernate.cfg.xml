@@ -20,6 +20,8 @@
     
     <!-- Archivos de mapeo -->
     <mapping resource="com/juegoahorcado/mapeos/Palabra.hbm.xml"/>
+    <mapping resource="com/juegoahorcado/mapeos/DetalleJugador.hbm.xml"/>
+    <mapping resource="com/juegoahorcado/mapeos/Estadistica.hbm.xml"/>
     
   </session-factory>
 </hibernate-configuration>

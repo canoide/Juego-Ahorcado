@@ -71,9 +71,9 @@ public class Palabra {
 		this.init();
 	}
 
-	public Palabra(int id, String palabra) {
+	public Palabra(/*int id, */String palabra) {
 		this.palabra = palabra;
-		this.id = id;
+		/*this.id = id;*/
 		this.init();
 	}
 	
@@ -98,5 +98,51 @@ public class Palabra {
 				letraEncontradas.add(letraEncontrada);
 		}
 		this.cantidadLetras = letraEncontradas.size();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		Palabra palabra = (Palabra) super.clone();
+		
+		List<Character> listaTemp = new ArrayList<Character> ();
+		for (int i = 0; i < this.listaLetras.size(); i++) {
+			listaTemp.add(new Character(this.listaLetras.get(0)));
+		}
+		palabra.listaLetras = listaTemp;
+		
+		return palabra;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		
+		if (obj.getClass() != this.getClass())
+			return false;
+		
+		Palabra palabra = (Palabra) obj;
+		
+		if (palabra.getId() != this.getId())
+			return false;
+		
+		if (!palabra.getPalabra().equals(this.getPalabra()))
+			return false;
+		
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }

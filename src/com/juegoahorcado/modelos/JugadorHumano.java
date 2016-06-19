@@ -1,50 +1,45 @@
 package com.juegoahorcado.modelos;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.juegoahorcado.utils.Utils;
 
 public class JugadorHumano extends Jugador {
+	
+	char letra = ' ';
 	
 	public JugadorHumano(String nombre, TurnoPalabra turnoPalabra, int vidas) {
 		super(nombre, turnoPalabra, vidas);
 	}
 
+	/*
 	@Override
-	public void run() {
-		while (!super.getTurnoPalabra().isJuegoTerminado()) {
-			try {
-				super.getTurnoPalabra().dameTurno(this);
-				
-				System.out.print("Ingrese su letra: ");
-				Scanner reader = new Scanner(System.in);
-				char letra = reader.next().charAt(0);
-				
-				
-				List<Integer> tempListaLetras = super.getTurnoPalabra().proponerLetra(letra);
-				if (tempListaLetras.size() > 0) {
-					System.out.println("Acertado " + this.getNombre() + " la letra: " + letra);
-					super.agregarLetraAcertada(letra, (ArrayList<Integer>) tempListaLetras);
-					super.setCantidadAciertos(super.getCantidadAciertos() + 1);
-				} else {
-					System.out.println("Ha errado " + this.getNombre() + " la letra: " + letra);
-					super.setCantidadErrores(super.getCantidadErrores() + 1);
-				}
-				
-				if (super.getTurnoPalabra().getCantidadLetras() == super.getListaLetrasAcerdas().size()) {
-					super.setEsGanador(true);
-					this.setChanged();
-					this.notifyObservers(this);
-				}
-				
-				super.getTurnoPalabra().devolverTurno(this);
-			
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-		}
+	public char checkInput(char letra) {
+		System.out.print("Ingrese Letra: ");
+		letra = new Scanner(System.in).next().charAt(0);
+		return letra;
+	}*/
+	
+	public char getInput() throws InterruptedException {
+		char letraTemp = new Character(letra);
+		if (this.letra != ' ')
+			this.letra = ' ';
+		
+		return letraTemp;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.juegoahorcado.modelos.Jugador#checkInput(char)
+	 */
+	@Override
+	public void setInput(char letra) {
+		this.letra = letra;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.juegoahorcado.modelos.Jugador#aplicarDormir()
+	 */
+	@Override
+	protected void aplicarDormir() throws InterruptedException {
+		Thread.sleep(Utils.getRandomRange(0, 10) * 1000);
 	}
 
 }

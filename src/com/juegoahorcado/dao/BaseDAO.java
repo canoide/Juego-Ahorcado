@@ -15,6 +15,7 @@ public abstract class BaseDAO<T> {
 	private Transaction tx;
 	Class<T> tipoClase;
 	
+	@SuppressWarnings("unchecked")
 	public BaseDAO() {
 		tipoClase = (Class<T>) ((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
@@ -75,6 +76,7 @@ public abstract class BaseDAO<T> {
 		return obj;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> obtenerLista() throws HibernateException {
         List<T> lista = null;  
         

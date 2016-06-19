@@ -38,6 +38,9 @@ public class TurnoPalabra implements Observer {
 		if (tempJugador.isEsGanador()) {
 			this.juegoTerminado = true;
 			Thread.interrupted();
+			
+			
+			
 			System.out.println("Juego Terminado");
 		}
 	}
@@ -50,9 +53,6 @@ public class TurnoPalabra implements Observer {
 	}
 	
 	public synchronized void devolverTurno (Jugador jugador) throws InterruptedException {
-		while (this.turnoDisponible)
-			this.wait();
-		
 		this.turnoDisponible = true;
 		
 		this.notifyAll();
@@ -85,4 +85,38 @@ public class TurnoPalabra implements Observer {
 	public int getCantidadLetrasDePalabra () {
 		return this.palabra.getCantidadLetrasDePalabra();
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (obj.getClass() != this.getClass())
+			return false;
+		
+		if (!obj.equals(this))
+			return false;
+		
+		TurnoPalabra tempTurno = (TurnoPalabra) obj;
+		
+		if (!tempTurno.palabra.equals(this.palabra))
+			return false;
+		if (tempTurno.juegoTerminado != this.juegoTerminado)
+			return false;
+		if (tempTurno.turnoDisponible != this.turnoDisponible)
+			return false;
+		
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
 }
