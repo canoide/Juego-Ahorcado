@@ -14,9 +14,9 @@
     <!-- Dialecto de la base de datos -->
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     
-    <!-- Otras propiedades importantes -->
+    <!-- Otras propiedades importantes  create-drop-->
     <property name="show_sql">true</property>
-    <property name="hbm2ddl.auto">create-drop</property>
+    <property name="hbm2ddl.auto">create</property>
     
     <!-- Archivos de mapeo -->
     <mapping resource="com/juegoahorcado/mapeos/Palabra.hbm.xml"/>

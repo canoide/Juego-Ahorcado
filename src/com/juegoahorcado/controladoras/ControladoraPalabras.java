@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.juegoahorcado.dao.PalabraDAO;
 import com.juegoahorcado.modelos.Palabra;
+import com.juegoahorcado.utils.Utils;
 
 public class ControladoraPalabras {
 
@@ -38,5 +39,15 @@ public class ControladoraPalabras {
 	
 	public List<Palabra> obtenerTodos() {
 		return this.dao.obtenerLista();
+	}
+	
+	public Palabra getRandomPalabra() {
+		List<Palabra> lista = this.obtenerTodos();
+		if (lista.size() == 0) {
+			// si no existe palabras cargadas crea una
+			return this.nuevaPalabra("PALABRA");
+		}
+		
+		return lista.get(Utils.getRandomRange(1, lista.size()));
 	}
 }

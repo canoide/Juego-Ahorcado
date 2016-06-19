@@ -17,12 +17,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import com.juegoahorcado.controladoras.ControladoraJuego;
 import com.juegoahorcado.modelos.Jugador;
-import javax.swing.border.LineBorder;
 
-public class MenuJuego {
+public class MenuJuego implements Observer {
 
 	private ControladoraJuego controladora;
 
@@ -64,6 +64,7 @@ public class MenuJuego {
 
 	public MenuJuego(String nombre, int cantidadVidas) {
 		this.controladora = new ControladoraJuego(nombre, cantidadVidas, 3);
+		this.controladora.registrarEventoJuegoTerminado(this);
 		this.initialize();
 		this.frame.setVisible(true);
 	}
@@ -285,6 +286,30 @@ public class MenuJuego {
 		this.controladora.setEntradaPersonaje(this.tfIngreseLetra.getText().charAt(0));
 	}
 
+	@Override
+	public void update(Observable o, Object arg) {
+		Jugador jugador = (Jugador) arg;
+		new DialogJuegoTerminado(jugador);
+		this.frame.setVisible(false);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	protected class PanelJugador implements Observer {
 
 		private JLabel lblLetrasCompletas;
@@ -352,4 +377,6 @@ public class MenuJuego {
 				canvas.setBackground(Color.RED);
 		}
 	}
+
+	
 }

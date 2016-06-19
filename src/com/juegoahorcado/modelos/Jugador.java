@@ -166,8 +166,10 @@ public abstract class Jugador extends Observable implements Runnable {
 				this.getTurnoPalabra().dameTurno(this);
 				
 				// despues que consiguio turno y termino el juego interrumpe el Hilo
-				if (this.getTurnoPalabra().isJuegoTerminado())
+				if (this.getTurnoPalabra().isJuegoTerminado()) {
 					Thread.interrupted();
+					this.getTurnoPalabra().devolverTurno(this);
+				}
 				
 				this.esMiTurno = true;
 				

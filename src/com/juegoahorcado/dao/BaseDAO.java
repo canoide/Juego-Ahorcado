@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -90,6 +91,21 @@ public abstract class BaseDAO<T> {
         }  
         
         return lista;
+	}
+	
+	public int cantidad() {
+		return this.obtenerLista().size();
+	}
+	
+	public SQLQuery createSQLQuery(String sql) {
+		try 
+        { 
+            this.iniciarOperacion(); 
+            return sesion.createSQLQuery(sql); 
+        } finally 
+        { 
+            sesion.close(); 
+        }  
 	}
 	
 	private void iniciarOperacion() throws HibernateException {

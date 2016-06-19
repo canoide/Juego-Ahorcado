@@ -43,6 +43,7 @@ public class Palabra {
 	 */
 	public void setPalabra(String palabra) {
 		this.palabra = palabra;
+		this.init();
 	}
 
 	/**
@@ -67,13 +68,11 @@ public class Palabra {
 	}
 
 	public Palabra() {
-		this.palabra = "HOLA";
-		this.init();
+		
 	}
 
-	public Palabra(/*int id, */String palabra) {
+	public Palabra(String palabra) {
 		this.palabra = palabra;
-		/*this.id = id;*/
 		this.init();
 	}
 	

@@ -187,6 +187,16 @@ public class MenuPalabras {
 	private void limpiarTabla() {
 		while (this.tableMode.getRowCount() > 0)
 			this.tableMode.removeRow(0);
-		;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		new MenuPrincipal();
+	}
+	
+	
 }

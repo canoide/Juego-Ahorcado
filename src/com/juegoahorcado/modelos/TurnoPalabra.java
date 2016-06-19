@@ -1,11 +1,13 @@
 package com.juegoahorcado.modelos;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class TurnoPalabra implements Observer {
+import com.juegoahorcado.controladoras.ControladoraPalabras;
+
+public class TurnoPalabra extends Observable implements Observer {
 
 	// buscar palabra
 	
@@ -18,7 +20,7 @@ public class TurnoPalabra implements Observer {
 	{
 		turnoDisponible = true;
 		juegoTerminado = false;
-		palabra = new Palabra();
+		palabra = new ControladoraPalabras().getRandomPalabra();
 	}
 
 	/**
@@ -39,15 +41,17 @@ public class TurnoPalabra implements Observer {
 			this.juegoTerminado = true;
 			Thread.interrupted();
 			
-			
+			this.setChanged();
+			this.notifyObservers(tempJugador);
 			
 			System.out.println("Juego Terminado");
 		}
 	}
 	
 	public synchronized void dameTurno(Jugador jugador) throws InterruptedException {
-		while (!this.turnoDisponible)
+		while (!this.turnoDisponible) {
 			this.wait();
+		}
 		
 		this.turnoDisponible = false;
 	}

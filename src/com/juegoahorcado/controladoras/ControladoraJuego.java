@@ -70,4 +70,18 @@ public class ControladoraJuego {
 		else
 			return null;
 	}
+
+	public void registrarEventoJuegoTerminado(Observer observer) {
+		this.turnoPalabra.addObserver(observer);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+	}
+	
+	
 }
