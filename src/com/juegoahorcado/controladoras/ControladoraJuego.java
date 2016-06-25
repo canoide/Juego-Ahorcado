@@ -1,13 +1,19 @@
 package com.juegoahorcado.controladoras;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
+
+import com.juegoahorcado.modelos.DetalleJugador;
 import com.juegoahorcado.modelos.Jugador;
 import com.juegoahorcado.modelos.JugadorHumano;
 import com.juegoahorcado.modelos.JugadorMaquina;
 import com.juegoahorcado.modelos.TurnoPalabra;
 
-public class ControladoraJuego {
+public class ControladoraJuego implements Observer {
 	
 	private TurnoPalabra turnoPalabra;
 	private Jugador[] jugadores;
@@ -22,7 +28,8 @@ public class ControladoraJuego {
 		
 		// crear turno Palabra
 		this.turnoPalabra = new TurnoPalabra();
-
+		this.turnoPalabra.addObserver(this);
+		
 		// crear jugador principal
 		this.jugadores[0] = new JugadorHumano(nombreJugador, this.turnoPalabra, cantidadVidas);
 		
@@ -76,12 +83,21 @@ public class ControladoraJuego {
 	}
 
 	/* (non-Javadoc)
-	 * @see java.lang.Object#finalize()
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override
-	protected void finalize() throws Throwable {
-		super.finalize();
+	public void update(Observable o, Object arg) {
+		// se llama cuando el juego finalizo recibiendo un jugador
+			List<DetalleJugador> listaDetalles = new ArrayList<DetalleJugador> ();
+			for (int i = 0; i < jugadores.length; i++) {
+				try {
+					listaDetalles.add(new DetalleJugador((Jugador) jugadores[i].clone()));
+				} catch (CloneNotSupportedException e) {
+					JOptionPane.showMessageDialog(null, "No se ha podido guardar las estadisticas");
+				}
+			}
+			
+			ControladoraEstadistica control = new ControladoraEstadistica();
+			control.guardar(control.nuevo(listaDetalles));
 	}
-	
-	
 }

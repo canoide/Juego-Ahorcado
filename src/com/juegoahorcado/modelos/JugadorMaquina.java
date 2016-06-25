@@ -47,7 +47,7 @@ public class JugadorMaquina extends Jugador {
 	 */
 	@Override
 	protected char getInput() throws InterruptedException {
-		Thread.sleep(Utils.getRandomRange(5, 10) * 1000);
+		Thread.sleep(Utils.getRandomRange(2, 4) * 1000);
 		return this.obtenerLetraAleatoria();
 	}
 }

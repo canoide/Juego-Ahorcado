@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import com.juegoahorcado.controladoras.ControladoraPalabras;
 
-public class TurnoPalabra extends Observable implements Observer {
+public class TurnoPalabra extends Observable implements Observer, Cloneable {
 
 	// buscar palabra
 	
@@ -17,6 +17,13 @@ public class TurnoPalabra extends Observable implements Observer {
 	
 	private boolean turnoDisponible;
 	
+	/**
+	 * @param palabra the palabra to set
+	 */
+	public void setPalabra(Palabra palabra) {
+		this.palabra = palabra;
+	}
+
 	{
 		turnoDisponible = true;
 		juegoTerminado = false;
@@ -121,6 +128,16 @@ public class TurnoPalabra extends Observable implements Observer {
 	@Override
 	public int hashCode() {
 		return super.hashCode();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		TurnoPalabra turno = (TurnoPalabra) super.clone();
+		turno.setPalabra((Palabra) palabra.clone());
+		return turno;
 	}
 	
 }

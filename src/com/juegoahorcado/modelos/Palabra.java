@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.juegoahorcado.utils.Utils;
 
-public class Palabra {
+public class Palabra implements Cloneable {
 
 	private int id;
 	

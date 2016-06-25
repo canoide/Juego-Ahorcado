@@ -5,17 +5,24 @@
 
 <hibernate-mapping>
 	<class name="com.juegoahorcado.modelos.Estadistica" table="ESTADISTICAS">
-		<id name="id" column="ID">
+		<id name="id" column="ID_ESTADISTICA">
 			<generator class="identity" />
 		</id>
-		<property name="nombreJugador" type="string" column="NOMBREJUGADOR"/>
 		
+		<property name="fecha" column="FECHA"/>
 		
-		<list name="listaDetalles" cascade="all">
-		    <key column="ID"/>
-		    <list-index column="IDX" />
+		<!--  
+		<set name="listaDetalles" inverse="true" cascade="all">
+		    <key column="ID_ESTADISTICA" not-null="true"/>
 		    <one-to-many class="com.juegoahorcado.modelos.DetalleJugador"/>
-		</list>
+		</set>
+		-->
+		
+		<list name="listaDetalles" inverse="true" cascade="all">
+	         <key column="ID_ESTADISTICA"/>
+	         <list-index column="ID_INDEX_LIST"/>
+	         <one-to-many class="com.juegoahorcado.modelos.DetalleJugador"/>
+	      </list>
 		
 	</class>
 </hibernate-mapping>

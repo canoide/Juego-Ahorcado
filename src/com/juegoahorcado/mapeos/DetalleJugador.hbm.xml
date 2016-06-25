@@ -8,10 +8,14 @@
 		<id name="id" column="ID">
 			<generator class="identity" />
 		</id>
+		
+		<property name="nombreJugador" type="string" column="NOMBREJUGADOR"/>
 		<property name="cantidadAciertos" column="CANTIDAD_ACIERTOS"/>
 		<property name="cantidadErrores" column="CANTIDAD_ERRORES"/>
 		<property name="esGanador" column="GANADOR"/>
 		
+		<many-to-one name="Estadistica" class="com.juegoahorcado.modelos.Estadistica"
+		    column="ID_ESTADISTICA" not-null="true"/>
 		
 	</class>
 </hibernate-mapping>

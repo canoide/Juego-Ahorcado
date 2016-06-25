@@ -1,6 +1,6 @@
 package com.juegoahorcado.controladoras;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.juegoahorcado.dao.EstadisticaDAO;
@@ -15,16 +15,23 @@ public class ControladoraEstadistica {
 		dao = new EstadisticaDAO();
 	}
 	
-	public Estadistica nuevo (String nombre) {
-		Estadistica estadistica = new Estadistica(nombre, new ArrayList<DetalleJugador>());
-		dao.guardar(estadistica);
+	public Estadistica nuevo (List<DetalleJugador> listaDetalles) {
+		Estadistica estadistica = new Estadistica();
+		
+		// Fecha
+		estadistica.setFecha(Calendar.getInstance().getTime());
+		
+		for (int i = 0; i < listaDetalles.size(); i++) {
+			listaDetalles.get(i).setEstadistica(estadistica);
+		}
+		
+		estadistica.setListaDetalles(listaDetalles);
+		
 		return estadistica;
 	}
 	
-	public Estadistica nuevo (String nombre, List<DetalleJugador> listaDetalles) {
-		Estadistica estadistica = this.nuevo(nombre);
-		estadistica.setListaDetalles(listaDetalles);
-		return estadistica;
+	public void guardar (Estadistica estadistica) {
+		dao.guardar(estadistica);
 	}
 	
 	public void modificar (Estadistica estadistica ) {
@@ -37,10 +44,6 @@ public class ControladoraEstadistica {
 	
 	public Estadistica obtener (int id) {
 		return this.dao.obtenerPorID(id);
-	}
-	
-	public Estadistica obtener (String nombreJugador) {
-		return this.dao.obtenerPorNombre(nombreJugador);
 	}
 	
 	public List<Estadistica> obtenerTodos() {

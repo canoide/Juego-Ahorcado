@@ -1,13 +1,14 @@
 package com.juegoahorcado.modelos;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public class Estadistica {
 	
 	private int id;
-	private String nombreJugador;
-	private List<DetalleJugador> listaDetalles = new ArrayList<DetalleJugador>();
+	private Date fecha;
+	private List<DetalleJugador> listaDetalles;// = new HashSet<DetalleJugador>();
 	/**
 	 * @return the id
 	 */
@@ -21,16 +22,16 @@ public class Estadistica {
 		this.id = id;
 	}
 	/**
-	 * @return the nombreJugador
+	 * @return the fecha
 	 */
-	public String getNombreJugador() {
-		return nombreJugador;
+	public Date getFecha() {
+		return fecha;
 	}
 	/**
-	 * @param nombreJugador the nombreJugador to set
+	 * @param fecha the fecha to set
 	 */
-	public void setNombreJugador(String nombreJugador) {
-		this.nombreJugador = nombreJugador;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 	/**
 	 * @return the listaDetalles
@@ -53,9 +54,8 @@ public class Estadistica {
 	 * @param nombreJugador
 	 * @param listaDetalles
 	 */
-	public Estadistica  (String nombreJugador, List<DetalleJugador> listaDetalles) {
+	public Estadistica  (Collection<DetalleJugador> listaDetalles) {
 		super();
-		this.nombreJugador = nombreJugador;
-		this.listaDetalles = listaDetalles;
+		this.listaDetalles.addAll(listaDetalles);
 	}
 }

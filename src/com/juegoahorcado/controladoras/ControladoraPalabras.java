@@ -17,9 +17,11 @@ public class ControladoraPalabras {
 	public Palabra nuevaPalabra (String palabra) {
 		Palabra tempPalabra = new Palabra(palabra);
 		
-		dao.guardar(tempPalabra);
-		
 		return tempPalabra;
+	}
+	
+	public void guardar (Palabra palabra) {
+		this.dao.guardar(palabra);
 	}
 	
 	public void modificar(int id, String palabra) {

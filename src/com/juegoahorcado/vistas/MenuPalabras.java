@@ -136,7 +136,8 @@ public class MenuPalabras {
 	private void onClickNuevo() {
 		if (!this.isModificar) {
 			String palabra = this.tfNombre.getText();
-			this.controladora.nuevaPalabra(palabra);
+			
+			this.controladora.guardar(this.controladora.nuevaPalabra(palabra));
 		} else {
 			String palabra = this.tfNombre.getText();
 			int id = (int) table.getValueAt(table.getSelectedRow(), 0);

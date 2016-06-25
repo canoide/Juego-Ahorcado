@@ -3,7 +3,6 @@
  */
 package com.juegoahorcado.vistas;
 
-
 public class Main {
 
 	/**

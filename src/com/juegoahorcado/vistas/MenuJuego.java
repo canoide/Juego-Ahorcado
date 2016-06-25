@@ -21,6 +21,8 @@ import javax.swing.border.LineBorder;
 
 import com.juegoahorcado.controladoras.ControladoraJuego;
 import com.juegoahorcado.modelos.Jugador;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuJuego implements Observer {
 
@@ -28,7 +30,6 @@ public class MenuJuego implements Observer {
 
 	private JFrame frame;
 	private JTextField tfNombreJugador;
-	private JTextField tfIngreseLetra;
 	private JTextField tfJugadorMaquina1;
 	private JTextField tfJugadorMaquina2;
 	private JTextField tfJugadorMaquina3;
@@ -76,19 +77,19 @@ public class MenuJuego implements Observer {
 
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 568, 414);
+		frame.setBounds(100, 100, 678, 469);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panelJugador = new JPanel();
 		panelJugador.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panelJugador.setBounds(10, 11, 267, 176);
+		panelJugador.setBounds(10, 11, 375, 418);
 		frame.getContentPane().add(panelJugador);
 		panelJugador.setLayout(null);
 
 		Canvas estadoTurnoJ = new Canvas();
 		estadoTurnoJ.setBackground(Color.RED);
-		estadoTurnoJ.setBounds(10, 10, 247, 7);
+		estadoTurnoJ.setBounds(10, 10, 355, 7);
 		panelJugador.add(estadoTurnoJ);
 
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -102,26 +103,8 @@ public class MenuJuego implements Observer {
 		panelJugador.add(tfNombreJugador);
 		tfNombreJugador.setColumns(10);
 
-		JLabel lblLetra = new JLabel("Letra:");
-		lblLetra.setBounds(10, 51, 46, 14);
-		panelJugador.add(lblLetra);
-
-		tfIngreseLetra = new JTextField();
-		tfIngreseLetra.setBounds(66, 48, 92, 20);
-		panelJugador.add(tfIngreseLetra);
-		tfIngreseLetra.setColumns(10);
-
-		JButton btnProbar = new JButton("Probar");
-		btnProbar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				onClickProbar();
-			}
-		});
-		btnProbar.setBounds(168, 47, 89, 23);
-		panelJugador.add(btnProbar);
-
 		JPanel panel = new JPanel();
-		panel.setBounds(46, 103, 178, 42);
+		panel.setBounds(98, 365, 178, 42);
 		panelJugador.add(panel);
 
 		JLabel lblPalabra = new JLabel("PA_A_RA");
@@ -132,7 +115,7 @@ public class MenuJuego implements Observer {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setLayout(null);
-		panel_1.setBounds(287, 11, 267, 176);
+		panel_1.setBounds(395, 11, 267, 134);
 		frame.getContentPane().add(panel_1);
 
 		Canvas canvas = new Canvas();
@@ -152,7 +135,7 @@ public class MenuJuego implements Observer {
 		panel_1.add(tfJugadorMaquina1);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(46, 103, 178, 42);
+		panel_2.setBounds(46, 82, 178, 42);
 		panel_1.add(panel_2);
 
 		JLabel lblPalabraMaq1 = new JLabel("PA_A_RA");
@@ -162,7 +145,7 @@ public class MenuJuego implements Observer {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setLayout(null);
-		panel_3.setBounds(10, 198, 267, 176);
+		panel_3.setBounds(395, 156, 267, 134);
 		frame.getContentPane().add(panel_3);
 
 		Canvas canvas_1 = new Canvas();
@@ -182,7 +165,7 @@ public class MenuJuego implements Observer {
 		panel_3.add(tfJugadorMaquina2);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(49, 92, 178, 42);
+		panel_4.setBounds(49, 82, 178, 42);
 		panel_3.add(panel_4);
 
 		JLabel lblPalabraMaq2 = new JLabel("PA_A_RA");
@@ -192,7 +175,7 @@ public class MenuJuego implements Observer {
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_5.setLayout(null);
-		panel_5.setBounds(287, 198, 267, 176);
+		panel_5.setBounds(395, 301, 267, 134);
 		frame.getContentPane().add(panel_5);
 
 		Canvas canvas_2 = new Canvas();
@@ -212,7 +195,7 @@ public class MenuJuego implements Observer {
 		panel_5.add(tfJugadorMaquina3);
 
 		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(49, 92, 178, 42);
+		panel_6.setBounds(49, 82, 178, 42);
 		panel_5.add(panel_6);
 
 		JLabel lblPalabraMaq3 = new JLabel("PA_A_RA");
@@ -220,12 +203,12 @@ public class MenuJuego implements Observer {
 		panel_6.add(lblPalabraMaq3);
 
 		JLabel lblVidas = new JLabel("Vidas:");
-		lblVidas.setBounds(10, 76, 46, 14);
+		lblVidas.setBounds(10, 54, 46, 14);
 		panelJugador.add(lblVidas);
 
 		tfJugador1 = new JTextField();
 		tfJugador1.setEditable(false);
-		tfJugador1.setBounds(66, 73, 92, 20);
+		tfJugador1.setBounds(66, 51, 92, 20);
 		panelJugador.add(tfJugador1);
 		tfJugador1.setColumns(10);
 
@@ -265,25 +248,259 @@ public class MenuJuego implements Observer {
 				jugadorTemp).update();
 		tfNombreJugador.setText(jugadorTemp.getNombre());
 		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBounds(45, 79, 277, 145);
+		panelJugador.add(panel_7);
+		
+		JButton btnA = new JButton("A");
+		btnA.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnA);
+		
+		JButton btnB = new JButton("B");
+		btnB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnB);
+		
+		JButton btnC = new JButton("C");
+		btnC.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnC);
+		
+		JButton btnD = new JButton("D");
+		btnD.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnD);
+		
+		JButton btnE = new JButton("E");
+		btnE.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnE);
+		
+		JButton btnF = new JButton("F");
+		btnF.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnF);
+		
+		JButton btnG = new JButton("G");
+		btnG.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnG);
+		
+		JButton btnH = new JButton("H");
+		btnH.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnH);
+		
+		JButton btnI = new JButton("I");
+		btnI.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnI);
+		
+		JButton btnJ = new JButton("J");
+		btnJ.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnJ);
+		
+		JButton btnK = new JButton("K");
+		btnK.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnK);
+		
+		JButton btnL = new JButton("L");
+		btnL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnL);
+		
+		JButton btnM = new JButton("M");
+		btnM.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnM);
+		
+		JButton btnN = new JButton("N");
+		btnN.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnN);
+		
+		JButton btnO = new JButton("O");
+		btnO.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnO);
+		
+		JButton btnP = new JButton("P");
+		btnP.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnP);
+		
+		JButton btnQ = new JButton("Q");
+		btnQ.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnQ);
+		
+		JButton btnR = new JButton("R");
+		btnR.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnR);
+		
+		JButton btnS = new JButton("S");
+		btnS.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnS);
+		
+		JButton btnT = new JButton("T");
+		btnT.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnT);
+		
+		JButton btnU = new JButton("U");
+		btnU.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnU);
+		
+		JButton btnV = new JButton("V");
+		btnV.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnV);
+		
+		JButton btnW = new JButton("W");
+		btnW.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnW);
+		
+		JButton btnX = new JButton("X");
+		btnX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnX);
+		
+		JButton btnY = new JButton("Y");
+		btnY.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnY);
+		
+		JButton btnZ = new JButton("Z");
+		btnZ.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClickLetra(e);
+			}
+		});
+		panel_7.add(btnZ);
+		
 
 		jugadorTemp = this.controladora.getJugador(1);
-		new PanelJugador(lblPalabraMaq1, tfJugador2, this.controladora.getCantidadLetrasDePalabra(), canvas,
+		new PanelJugadorMaquina(lblPalabraMaq1, tfJugador2, this.controladora.getCantidadLetrasDePalabra(), canvas,
 				jugadorTemp).update();
 		tfJugadorMaquina1.setText(jugadorTemp.getNombre());
 
 		jugadorTemp = this.controladora.getJugador(2);
-		new PanelJugador(lblPalabraMaq2, tfJugador3, this.controladora.getCantidadLetrasDePalabra(), canvas_1,
+		new PanelJugadorMaquina(lblPalabraMaq2, tfJugador3, this.controladora.getCantidadLetrasDePalabra(), canvas_1,
 				jugadorTemp).update();
 		tfJugadorMaquina2.setText(jugadorTemp.getNombre());
 
 		jugadorTemp = this.controladora.getJugador(3);
-		new PanelJugador(lblPalabraMaq3, tfJugador4, this.controladora.getCantidadLetrasDePalabra(), canvas_2,
+		new PanelJugadorMaquina(lblPalabraMaq3, tfJugador4, this.controladora.getCantidadLetrasDePalabra(), canvas_2,
 				jugadorTemp).update();
 		tfJugadorMaquina3.setText(jugadorTemp.getNombre());
-	}
-
-	protected void onClickProbar() {
-		this.controladora.setEntradaPersonaje(this.tfIngreseLetra.getText().charAt(0));
 	}
 
 	@Override
@@ -293,7 +510,14 @@ public class MenuJuego implements Observer {
 		this.frame.setVisible(false);
 	}
 	
-	
+	private void onClickLetra (MouseEvent e) {
+		JButton btn =(JButton)e.getSource();
+		if (!btn.isEnabled())
+			return;
+		
+		btn.setEnabled(false);
+		this.controladora.setEntradaPersonaje(btn.getText().charAt(0));
+	}
 	
 	
 	
@@ -335,7 +559,7 @@ public class MenuJuego implements Observer {
 			this.lblLetrasCompletas.setText(this.palabra);
 		}
 
-		public void ingresarLetra(char letra, ArrayList<Integer> posiciones) {
+		protected void ingresarLetra(char letra, ArrayList<Integer> posiciones) {
 			char[] letras = this.palabra.toCharArray();
 			for (int i = 0; i < posiciones.size(); i++) {
 				letras[posiciones.get(i)] = letra;
@@ -378,5 +602,21 @@ public class MenuJuego implements Observer {
 		}
 	}
 
-	
+	protected class PanelJugadorMaquina extends PanelJugador {
+
+		public PanelJugadorMaquina(JLabel lblLetrasCompletas, JTextField tfVida, int cantidadLetras, Canvas canvas,
+				Jugador jugador) {
+			super(lblLetrasCompletas, tfVida, cantidadLetras, canvas, jugador);
+		}
+
+		/* (non-Javadoc)
+		 * @see com.juegoahorcado.vistas.MenuJuego.PanelJugador#ingresarLetra(char, java.util.ArrayList)
+		 */
+		@Override
+		protected void ingresarLetra(char letra, ArrayList<Integer> posiciones) {
+			super.ingresarLetra('*', posiciones);
+		}
+		
+		
+	}
 }

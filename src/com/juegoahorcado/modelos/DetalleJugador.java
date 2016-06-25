@@ -1,13 +1,14 @@
 package com.juegoahorcado.modelos;
 
-import java.io.Serializable;
-
-public class DetalleJugador implements Serializable {
+public class DetalleJugador {
 	
 	private int id;
+	private String nombreJugador;
 	private int cantidadAciertos;
 	private int cantidadErrores;
 	private boolean esGanador;
+	
+	private Estadistica estadistica;
 	
 	public int getId() {
 		return id;
@@ -15,6 +16,14 @@ public class DetalleJugador implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getNombreJugador() {
+		return nombreJugador;
+	}
+
+	public void setNombreJugador(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
 	}
 
 	public int getCantidadAciertos() {
@@ -41,6 +50,20 @@ public class DetalleJugador implements Serializable {
 		this.esGanador = esGanador;
 	}
 
+	/**
+	 * @return the estadistica
+	 */
+	public Estadistica getEstadistica() {
+		return estadistica;
+	}
+
+	/**
+	 * @param estadistica the estadistica to set
+	 */
+	public void setEstadistica(Estadistica estadistica) {
+		this.estadistica = estadistica;
+	}
+
 	public DetalleJugador() {
 
 	}
@@ -55,6 +78,13 @@ public class DetalleJugador implements Serializable {
 		this.cantidadAciertos = cantidadAciertos;
 		this.cantidadErrores = cantidadErrores;
 		this.esGanador = esGanador;
+	}
+	
+	public DetalleJugador(Jugador jugador) {
+		this.nombreJugador = jugador.getNombre();
+		this.cantidadAciertos = jugador.getCantidadAciertos();
+		this.cantidadErrores = jugador.getCantidadErrores();
+		this.esGanador = jugador.isEsGanador();
 	}
 	
 }

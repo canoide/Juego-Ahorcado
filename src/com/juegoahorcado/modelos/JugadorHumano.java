@@ -41,5 +41,4 @@ public class JugadorHumano extends Jugador {
 	protected void aplicarDormir() throws InterruptedException {
 		Thread.sleep(Utils.getRandomRange(0, 10) * 1000);
 	}
-
 }

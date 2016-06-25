@@ -5,7 +5,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Observable;
 
-public abstract class Jugador extends Observable implements Runnable {
+public abstract class Jugador extends Observable implements Runnable, Cloneable {
 
 	private TurnoPalabra turnoPalabra;
 	private int vidas = 0;
@@ -29,6 +29,15 @@ public abstract class Jugador extends Observable implements Runnable {
 	public TurnoPalabra getTurnoPalabra() {
 		return turnoPalabra;
 	}
+	
+	/**
+	 * @param esMiTurno the esMiTurno to set
+	 */
+	public void setTurnoPalabra(TurnoPalabra turnoPalabra) {
+		this.turnoPalabra = turnoPalabra;
+	}
+
+
 
 	/**
 	 * @return the vidas
@@ -167,8 +176,8 @@ public abstract class Jugador extends Observable implements Runnable {
 				
 				// despues que consiguio turno y termino el juego interrumpe el Hilo
 				if (this.getTurnoPalabra().isJuegoTerminado()) {
-					Thread.interrupted();
 					this.getTurnoPalabra().devolverTurno(this);
+					Thread.interrupted();
 				}
 				
 				this.esMiTurno = true;
@@ -263,4 +272,10 @@ public abstract class Jugador extends Observable implements Runnable {
 		return super.hashCode();
 	}
 
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Jugador jugador = (Jugador) super.clone();
+		jugador.setTurnoPalabra((TurnoPalabra)this.turnoPalabra.clone());
+		return jugador;
+	}
 }

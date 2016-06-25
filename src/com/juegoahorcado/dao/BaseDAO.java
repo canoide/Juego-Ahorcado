@@ -27,6 +27,7 @@ public abstract class BaseDAO<T> {
 		try {
 			
 			this.iniciarOperacion();
+			this.sesion.beginTransaction();
 			id = (int) sesion.save(obj);
 			tx.commit();
 		} catch (Exception e) {
