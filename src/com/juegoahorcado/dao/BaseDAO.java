@@ -85,7 +85,7 @@ public abstract class BaseDAO<T> {
         try 
         { 
             this.iniciarOperacion(); 
-            lista = sesion.createQuery("from " + tipoClase.getName()).list(); 
+            lista = (List<T>) sesion.createQuery("from " + tipoClase.getName()).list(); 
         } finally 
         { 
             sesion.close(); 

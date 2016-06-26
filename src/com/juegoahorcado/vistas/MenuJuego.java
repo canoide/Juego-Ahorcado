@@ -21,6 +21,7 @@ import com.juegoahorcado.controladoras.ControladoraJuego;
 import com.juegoahorcado.modelos.Jugador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.FlowLayout;
 
 public class MenuJuego implements Observer {
 
@@ -247,19 +248,22 @@ public class MenuJuego implements Observer {
 		tfNombreJugador.setText(jugadorTemp.getNombre());
 		
 		JPanel panel_7 = new JPanel();
-		panel_7.setBounds(45, 79, 277, 145);
+		panel_7.setBounds(31, 79, 311, 145);
 		panelJugador.add(panel_7);
 		
 		JButton btnA = new JButton("A");
+		btnA.setBounds(7, 5, 42, 23);
 		btnA.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				onClickLetra(e);
 			}
 		});
+		panel_7.setLayout(null);
 		panel_7.add(btnA);
 		
 		JButton btnB = new JButton("B");
+		btnB.setBounds(59, 5, 42, 23);
 		btnB.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -269,6 +273,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnB);
 		
 		JButton btnC = new JButton("C");
+		btnC.setBounds(111, 5, 42, 23);
 		btnC.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -278,6 +283,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnC);
 		
 		JButton btnD = new JButton("D");
+		btnD.setBounds(163, 5, 42, 23);
 		btnD.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -287,6 +293,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnD);
 		
 		JButton btnE = new JButton("E");
+		btnE.setBounds(215, 5, 42, 23);
 		btnE.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -296,6 +303,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnE);
 		
 		JButton btnF = new JButton("F");
+		btnF.setBounds(267, 5, 42, 23);
 		btnF.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -305,6 +313,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnF);
 		
 		JButton btnG = new JButton("G");
+		btnG.setBounds(7, 33, 42, 23);
 		btnG.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -314,6 +323,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnG);
 		
 		JButton btnH = new JButton("H");
+		btnH.setBounds(59, 33, 42, 23);
 		btnH.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -323,6 +333,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnH);
 		
 		JButton btnI = new JButton("I");
+		btnI.setBounds(111, 33, 42, 23);
 		btnI.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -332,6 +343,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnI);
 		
 		JButton btnJ = new JButton("J");
+		btnJ.setBounds(163, 33, 42, 23);
 		btnJ.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -341,6 +353,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnJ);
 		
 		JButton btnK = new JButton("K");
+		btnK.setBounds(215, 33, 42, 23);
 		btnK.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -350,6 +363,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnK);
 		
 		JButton btnL = new JButton("L");
+		btnL.setBounds(267, 33, 42, 23);
 		btnL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -359,6 +373,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnL);
 		
 		JButton btnM = new JButton("M");
+		btnM.setBounds(7, 61, 42, 23);
 		btnM.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -368,6 +383,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnM);
 		
 		JButton btnN = new JButton("N");
+		btnN.setBounds(59, 61, 42, 23);
 		btnN.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -377,6 +393,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnN);
 		
 		JButton btnO = new JButton("O");
+		btnO.setBounds(111, 61, 42, 23);
 		btnO.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -386,6 +403,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnO);
 		
 		JButton btnP = new JButton("P");
+		btnP.setBounds(163, 61, 42, 23);
 		btnP.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -395,6 +413,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnP);
 		
 		JButton btnQ = new JButton("Q");
+		btnQ.setBounds(215, 61, 42, 23);
 		btnQ.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -404,6 +423,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnQ);
 		
 		JButton btnR = new JButton("R");
+		btnR.setBounds(267, 61, 42, 23);
 		btnR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -413,6 +433,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnR);
 		
 		JButton btnS = new JButton("S");
+		btnS.setBounds(7, 89, 42, 23);
 		btnS.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -422,6 +443,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnS);
 		
 		JButton btnT = new JButton("T");
+		btnT.setBounds(59, 89, 42, 23);
 		btnT.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -431,6 +453,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnT);
 		
 		JButton btnU = new JButton("U");
+		btnU.setBounds(111, 89, 42, 23);
 		btnU.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -440,6 +463,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnU);
 		
 		JButton btnV = new JButton("V");
+		btnV.setBounds(163, 89, 42, 23);
 		btnV.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -449,6 +473,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnV);
 		
 		JButton btnW = new JButton("W");
+		btnW.setBounds(215, 89, 42, 23);
 		btnW.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -458,6 +483,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnW);
 		
 		JButton btnX = new JButton("X");
+		btnX.setBounds(267, 89, 42, 23);
 		btnX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -467,6 +493,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnX);
 		
 		JButton btnY = new JButton("Y");
+		btnY.setBounds(111, 117, 42, 23);
 		btnY.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -476,6 +503,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnY);
 		
 		JButton btnZ = new JButton("Z");
+		btnZ.setBounds(163, 117, 42, 23);
 		btnZ.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

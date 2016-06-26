@@ -1,7 +1,5 @@
 package com.juegoahorcado.utils;
 
-import javax.swing.JOptionPane;
-
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,7 +13,7 @@ public class HibernateUtil {
 			try {
 				sessionFactory = new Configuration().configure().buildSessionFactory();
 			} catch (HibernateException e) {
-				throw new HibernateException ("Se ha producido el siguiente error: /n" + e.getMessage());
+			throw new HibernateException ("Se ha producido el siguiente error: /n" + e.getMessage());
 			}
 		}
 		

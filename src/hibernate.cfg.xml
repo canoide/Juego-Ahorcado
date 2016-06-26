@@ -16,7 +16,7 @@
     
     <!-- Otras propiedades importantes  create-drop-->
     <property name="show_sql">true</property>
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">update</property>
     
     <!-- Archivos de mapeo -->
     <mapping resource="com/juegoahorcado/mapeos/Palabra.hbm.xml"/>

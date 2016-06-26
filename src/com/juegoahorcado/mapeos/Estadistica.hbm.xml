@@ -18,11 +18,13 @@
 		</set>
 		-->
 		
-		<list name="listaDetalles" inverse="true" cascade="all">
+		
+		<list name="listaDetalles" inverse="true" cascade="all" lazy="false">
 	         <key column="ID_ESTADISTICA"/>
 	         <list-index column="ID_INDEX_LIST"/>
 	         <one-to-many class="com.juegoahorcado.modelos.DetalleJugador"/>
 	      </list>
+		
 		
 	</class>
 </hibernate-mapping>
