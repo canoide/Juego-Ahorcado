@@ -17,6 +17,8 @@ public class TurnoPalabra extends Observable implements Observer, Cloneable {
 	
 	private boolean turnoDisponible;
 	
+	private List<Jugador> listaJugadores;
+	
 	/**
 	 * @param palabra the palabra to set
 	 */
@@ -52,6 +54,21 @@ public class TurnoPalabra extends Observable implements Observer, Cloneable {
 			this.notifyObservers(tempJugador);
 			
 			System.out.println("Juego Terminado");
+		}
+		
+		boolean check = true;
+		for (int i = 0; i < this.listaJugadores.size(); i++) {
+			if (this.listaJugadores.get(i).getVidas() != 0)
+				check = false;
+		}
+		
+		
+		if (check) {
+			this.juegoTerminado = true;
+			Thread.interrupted();
+			
+			this.setChanged();
+			this.notifyObservers();
 		}
 	}
 	
@@ -140,4 +157,13 @@ public class TurnoPalabra extends Observable implements Observer, Cloneable {
 		return turno;
 	}
 	
+	
+	public void addObservable (Jugador jugador) {
+		if (this.listaJugadores == null) 
+			this.listaJugadores = new ArrayList<Jugador>();
+		
+		jugador.addObserver(this);
+		
+		this.listaJugadores.add(jugador);
+	}
 }

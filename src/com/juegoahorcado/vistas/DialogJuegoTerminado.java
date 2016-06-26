@@ -28,14 +28,43 @@ public class DialogJuegoTerminado extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogJuegoTerminado(Jugador jugador) {
-		this.initialize();
+		if (jugador != null) {
+			this.initialize();
+			
+			this.txtAlejandro.setText(jugador.getNombre());
+			this.tfAciertos.setText(jugador.getCantidadAciertos() + "");
+			this.tfErrads.setText(jugador.getCantidadErrores() + "");
+		} else {
+			this.initializeSinGanador();
+		}
+
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
+	}
+	
+	private void initializeSinGanador () {
+		setBounds(100, 100, 205, 197);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
 		
-		this.txtAlejandro.setText(jugador.getNombre());
-		this.tfAciertos.setText(jugador.getCantidadAciertos() + "");
-		this.tfErrads.setText(jugador.getCantidadErrores() + "");
+
+		JLabel lblNoHuboGanadores = new JLabel("No hubo Ganadores");
+		lblNoHuboGanadores.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNoHuboGanadores.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoHuboGanadores.setBounds(10, 11, 169, 109);
+		contentPanel.add(lblNoHuboGanadores);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				onClickAceptar();
+			}
+		});
+		btnAceptar.setBounds(90, 124, 89, 23);
+		contentPanel.add(btnAceptar);
 	}
 	
 	private void initialize() {
@@ -88,6 +117,7 @@ public class DialogJuegoTerminado extends JDialog {
 		txtAlejandro.setBounds(66, 11, 113, 32);
 		contentPanel.add(txtAlejandro);
 		txtAlejandro.setColumns(10);
+		
 	}
 	
 	private void onClickAceptar() {

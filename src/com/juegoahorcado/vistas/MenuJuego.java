@@ -44,7 +44,7 @@ public class MenuJuego implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuJuego window = new MenuJuego();
+					MenuJuego window = new MenuJuego("Alejandro", 5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -531,7 +531,11 @@ public class MenuJuego implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		Jugador jugador = (Jugador) arg;
+		
+		Jugador jugador = null;
+		if (arg != null)
+			jugador = (Jugador) arg;
+		
 		new DialogJuegoTerminado(jugador);
 		this.frame.setVisible(false);
 	}
