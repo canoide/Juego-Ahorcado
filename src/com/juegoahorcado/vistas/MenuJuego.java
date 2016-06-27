@@ -63,10 +63,10 @@ public class MenuJuego implements Observer {
 	}
 
 	public MenuJuego(String nombre, int cantidadVidas) {
-		this.frame.setVisible(true);
 		this.controladora = new ControladoraJuego(nombre, cantidadVidas, 3);
 		this.controladora.registrarEventoJuegoTerminado(this);
 		this.initialize();
+		this.frame.setVisible(true);
 	}
 
 	/**
