@@ -40,7 +40,7 @@ public class ControladoraJuego implements Observer {
 		
 		// crea los hilos y los pone en ejecucion agregando el observador
 		for (int i = 0; i < jugadores.length; i++) {
-			this.jugadores[i].addObserver(this.turnoPalabra);
+			this.turnoPalabra.addObservable(this.jugadores[i]);
 			new Thread(this.jugadores[i]).start();
 		}
 	}

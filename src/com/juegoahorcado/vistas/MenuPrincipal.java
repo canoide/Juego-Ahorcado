@@ -98,7 +98,7 @@ public class MenuPrincipal {
 	
 	// ------------------------- ONCLICK BUTTON --------------------------------------------
 	private void onClickButtonNuevoJuego () {
-		if(tfNombreJugador.getText()!=""){
+		if(!tfNombreJugador.getText().isEmpty()){
 		new MenuJuego(tfNombreJugador.getText(), 5);
 		this.frame.setVisible(false);
 		} else {
