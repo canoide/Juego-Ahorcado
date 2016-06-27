@@ -94,7 +94,7 @@ public abstract class BaseDAO<T> {
         return lista;
 	}
 	
-	public int cantidad() {
+	public int getCantidad() {
 		return this.obtenerLista().size();
 	}
 	

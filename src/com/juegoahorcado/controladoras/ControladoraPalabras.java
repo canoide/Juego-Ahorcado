@@ -50,6 +50,10 @@ public class ControladoraPalabras {
 			return this.nuevaPalabra("PALABRA");
 		}
 		
-		return lista.get(Utils.getRandomRange(1, lista.size()));
+		return lista.get(Utils.getRandomRange(0, lista.size() - 1));
+	}
+	
+	public int getCantidad(){
+		return this.dao.getCantidad();
 	}
 }

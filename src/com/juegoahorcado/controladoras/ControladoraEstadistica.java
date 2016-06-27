@@ -1,5 +1,6 @@
 package com.juegoahorcado.controladoras;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -30,6 +31,22 @@ public class ControladoraEstadistica {
 		return estadistica;
 	}
 	
+	public Estadistica nuevo (DetalleJugador ... listaDetalles) {
+		Estadistica estadistica = new Estadistica();
+		List<DetalleJugador> listaDetallesTemp = new ArrayList<DetalleJugador>();
+		// Fecha
+		estadistica.setFecha(Calendar.getInstance().getTime());
+		
+		for (int i = 0; i < listaDetalles.length; i++) {
+			listaDetalles[i].setEstadistica(estadistica);
+			listaDetallesTemp.add(listaDetalles[i]);
+		}
+		
+		estadistica.setListaDetalles(listaDetallesTemp);
+		
+		return estadistica;
+	}
+	
 	public void guardar (Estadistica estadistica) {
 		dao.guardar(estadistica);
 	}
@@ -48,5 +65,9 @@ public class ControladoraEstadistica {
 	
 	public List<Estadistica> obtenerTodos() {
 		return this.dao.obtenerLista();
+	}
+	
+	public int getCantidad(){
+		return this.dao.getCantidad();
 	}
 }

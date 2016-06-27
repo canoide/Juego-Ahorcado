@@ -61,6 +61,7 @@ public class MenuJuego implements Observer {
 	 */
 	public MenuJuego() {
 		this.controladora = new ControladoraJuego("Jugador", 5, 3);
+		this.listaBotones = new ArrayList<>();
 		initialize();
 		this.frame.setVisible(true);
 	}
@@ -245,11 +246,7 @@ public class MenuJuego implements Observer {
 		label_4.setBounds(10, 54, 46, 14);
 		panel_5.add(label_4);
 
-		// INSTANCIANDO PANELES
-		Jugador jugadorTemp = this.controladora.getJugador(0);
-		new PanelJugador(lblPalabra, tfJugador1, this.controladora.getCantidadLetrasDePalabra(), estadoTurnoJ,
-				jugadorTemp, this.listaBotones).update();
-		tfNombreJugador.setText(jugadorTemp.getNombre());
+		//BOTONES----------------
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBounds(31, 79, 311, 145);
@@ -568,6 +565,14 @@ public class MenuJuego implements Observer {
 		});
 		panel_7.add(btnZ);
 		
+		// INSTANCIANDO PANELES
+				Jugador jugadorTemp = this.controladora.getJugador(0);
+				new PanelJugador(lblPalabra, tfJugador1, this.controladora.getCantidadLetrasDePalabra(), estadoTurnoJ,
+						jugadorTemp, this.listaBotones).update();
+				tfNombreJugador.setText(jugadorTemp.getNombre());
+				
+				
+		
 
 		jugadorTemp = this.controladora.getJugador(1);
 		new PanelJugadorMaquina(lblPalabraMaq1, tfJugador2, this.controladora.getCantidadLetrasDePalabra(), canvas,
@@ -686,14 +691,14 @@ public class MenuJuego implements Observer {
 
 			if (this.jugador.isEsMiTurno()) {
 				canvas.setBackground(Color.GREEN);
-				if(this.listaBotones != null){
+				if(this.jugador instanceof JugadorHumano){//this.listaBotones != null){
 					for(int i =0; i<this.listaBotones.size(); i++){
 						this.listaBotones.get(i).setEnabled(true);
 					}
 				}
 		} else {
 				canvas.setBackground(Color.RED);
-				if(this.listaBotones != null){
+				if(this.jugador instanceof JugadorHumano){//this.listaBotones != null){
 					for(int i =0; i<this.listaBotones.size(); i++){
 						this.listaBotones.get(i).setEnabled(false);
 					}

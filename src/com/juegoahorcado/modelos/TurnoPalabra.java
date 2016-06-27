@@ -56,22 +56,18 @@ public class TurnoPalabra extends Observable implements Observer, Cloneable {
 			System.out.println("Juego Terminado. Ha Ganado.");
 		} else if (tempJugador instanceof JugadorHumano && tempJugador.getVidas() < 1){
 			this.juegoTerminado = true;
-			Thread.interrupted();
+			
 			
 			this.setChanged();
-			this.notifyObservers(tempJugador);
-			
+			this.notifyObservers();
 			System.out.println("Juego Terminado. Ha Perdido.");
 		}
-		/*
-		boolean check = false;
-		int j=0;
-		for (int i = 0; i < this.listaJugadores.size(); i++) {
-			if (this.listaJugadores.get(i).getVidas() == 0)
-				j++;
-		}
-		if(j>3) check=true;
 		
+		/*boolean check = false;
+		for (int i = 0; i < this.listaJugadores.size(); i++) {
+			if (this.listaJugadores.get(i).getVidas() != 0)
+				check = false;
+		}
 		
 		if (check) {
 			this.juegoTerminado = true;
@@ -79,8 +75,7 @@ public class TurnoPalabra extends Observable implements Observer, Cloneable {
 			
 			this.setChanged();
 			this.notifyObservers();
-		}
-		*/
+		}*/
 	}
 	
 	public synchronized void dameTurno(Jugador jugador) throws InterruptedException {
