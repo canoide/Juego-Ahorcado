@@ -29,18 +29,34 @@ public class DialogJuegoTerminado extends JDialog {
 	 */
 	public DialogJuegoTerminado(Jugador jugador) {
 		if (jugador != null) {
+			
 			this.initialize();
+			
+			if(jugador.isEsGanador()){
+				JLabel lblEstado = new JLabel("Gano! :)");
+				lblEstado.setBounds(10, 128, 46, 14);
+				contentPanel.add(lblEstado);
+			} else {
+				JLabel lblEstado = new JLabel("Perdio! :(");
+				lblEstado.setBounds(10, 128, 46, 14);
+				contentPanel.add(lblEstado);
+			}
 			
 			this.txtAlejandro.setText(jugador.getNombre());
 			this.tfAciertos.setText(jugador.getCantidadAciertos() + "");
 			this.tfErrads.setText(jugador.getCantidadErrores() + "");
+			
 		} else {
 			this.initializeSinGanador();
 		}
-
+		
+		
+		
+		
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
+
 	}
 	
 	private void initializeSinGanador () {
@@ -83,7 +99,7 @@ public class DialogJuegoTerminado extends JDialog {
 		btnAceptar.setBounds(90, 124, 89, 23);
 		contentPanel.add(btnAceptar);
 		
-		JLabel lblGanador = new JLabel("GANADOR:");
+		JLabel lblGanador = new JLabel("JUGADOR:");
 		lblGanador.setBounds(10, 15, 62, 27);
 		contentPanel.add(lblGanador);
 		
@@ -112,12 +128,11 @@ public class DialogJuegoTerminado extends JDialog {
 		txtAlejandro = new JTextField();
 		txtAlejandro.setHorizontalAlignment(SwingConstants.RIGHT);
 		txtAlejandro.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtAlejandro.setText("ALEJANDRO");
+		txtAlejandro.setText("JUGADOR");
 		txtAlejandro.setEditable(false);
 		txtAlejandro.setBounds(66, 11, 113, 32);
 		contentPanel.add(txtAlejandro);
 		txtAlejandro.setColumns(10);
-		
 	}
 	
 	private void onClickAceptar() {

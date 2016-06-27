@@ -22,7 +22,7 @@ public class JugadorMaquina extends Jugador {
 	 */
 	@Override
 	protected void aplicarDormir() throws InterruptedException {
-		Thread.sleep(Utils.getRandomRange(15, 30) * 1000);
+		Thread.sleep(Utils.getRandomRange(15, 30) * 1000); //volver a * 1000
 	}
 
 	private Character obtenerLetraAleatoria () {
@@ -47,7 +47,7 @@ public class JugadorMaquina extends Jugador {
 	 */
 	@Override
 	protected char getInput() throws InterruptedException {
-		Thread.sleep(Utils.getRandomRange(2, 4) * 1000);
+		Thread.sleep(Utils.getRandomRange(2, 4) * 1000); //volver a * 1000
 		return this.obtenerLetraAleatoria();
 	}
 }

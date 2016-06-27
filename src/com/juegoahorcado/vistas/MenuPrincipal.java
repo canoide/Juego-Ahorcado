@@ -6,11 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 public class MenuPrincipal {
 	
 	private JFrame frame;
+	private JTextField tfNombreJugador;
 
 	/**
 	 * Launch the application.
@@ -80,13 +84,26 @@ public class MenuPrincipal {
 		});
 		btnPalabras.setBounds(154, 137, 125, 23);
 		frame.getContentPane().add(btnPalabras);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(154, 44, 58, 14);
+		frame.getContentPane().add(lblNombre);
+		
+		tfNombreJugador = new JTextField();
+		tfNombreJugador.setBounds(210, 41, 69, 20);
+		frame.getContentPane().add(tfNombreJugador);
+		tfNombreJugador.setColumns(10);
 	}
 
 	
 	// ------------------------- ONCLICK BUTTON --------------------------------------------
 	private void onClickButtonNuevoJuego () {
-		new MenuJuego("Alejandro", 5);
+		if(tfNombreJugador.getText()!=""){
+		new MenuJuego(tfNombreJugador.getText(), 5);
 		this.frame.setVisible(false);
+		} else {
+			JOptionPane.showMessageDialog(null, "No ingreso un nombre valido");
+		}
 	}
 	
 	private void onClickButtonEstadisticas () {

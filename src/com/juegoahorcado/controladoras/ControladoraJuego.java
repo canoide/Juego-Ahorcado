@@ -40,7 +40,7 @@ public class ControladoraJuego implements Observer {
 		
 		// crea los hilos y los pone en ejecucion agregando el observador
 		for (int i = 0; i < jugadores.length; i++) {
-			this.turnoPalabra.addObservable(this.jugadores[i]);
+			this.jugadores[i].addObserver(this.turnoPalabra);
 			new Thread(this.jugadores[i]).start();
 		}
 	}
@@ -87,18 +87,17 @@ public class ControladoraJuego implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		
 		// se llama cuando el juego finalizo recibiendo un jugador
-		List<DetalleJugador> listaDetalles = new ArrayList<DetalleJugador> ();
-		for (int i = 0; i < jugadores.length; i++) {
-			try {
-				listaDetalles.add(new DetalleJugador((Jugador) jugadores[i].clone()));
-			} catch (CloneNotSupportedException e) {
-				JOptionPane.showMessageDialog(null, "No se ha podido guardar las estadisticas");
+			List<DetalleJugador> listaDetalles = new ArrayList<DetalleJugador> ();
+			for (int i = 0; i < jugadores.length; i++) {
+				try {
+					listaDetalles.add(new DetalleJugador((Jugador) jugadores[i].clone()));
+				} catch (CloneNotSupportedException e) {
+					JOptionPane.showMessageDialog(null, "No se ha podido guardar las estadisticas");
+				}
 			}
-		}
 			
-		ControladoraEstadistica control = new ControladoraEstadistica();
-		control.guardar(control.nuevo(listaDetalles));
+			ControladoraEstadistica control = new ControladoraEstadistica();
+			control.guardar(control.nuevo(listaDetalles));
 	}
 }

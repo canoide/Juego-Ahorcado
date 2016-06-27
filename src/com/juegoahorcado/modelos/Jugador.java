@@ -210,8 +210,9 @@ public abstract class Jugador extends Observable implements Runnable, Cloneable 
 					this.setEsGanador(true);
 				}
 				
-
-				this.getTurnoPalabra().devolverTurno(this);
+				if(this.esGanador==false){
+					this.getTurnoPalabra().devolverTurno(this);
+				}
 
 				this.letra = ' ';
 				this.esMiTurno = false;
@@ -225,6 +226,11 @@ public abstract class Jugador extends Observable implements Runnable, Cloneable 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if(this instanceof JugadorHumano && this.vidas < 1){
+			this.setChanged();
+			this.notifyObservers(this);
 		}
 
 	}
