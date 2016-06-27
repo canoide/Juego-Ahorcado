@@ -35,7 +35,7 @@ public class ControladoraJuego implements Observer {
 		
 		// crea las maquinas
 		for (int i = 1; i < cantidadMaquinas + 1; i++) {
-			this.jugadores[i]  = new JugadorMaquina("Maquina " + i, this.turnoPalabra, cantidadVidas);
+			this.jugadores[i]  = new JugadorMaquina("Maquina " + i, this.turnoPalabra, cantidadVidas+1);
 		}
 		
 		// crea los hilos y los pone en ejecucion agregando el observador

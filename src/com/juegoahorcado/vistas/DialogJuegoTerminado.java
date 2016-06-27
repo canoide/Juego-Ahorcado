@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.juegoahorcado.modelos.Jugador;
+import com.juegoahorcado.modelos.JugadorHumano;
+import com.juegoahorcado.modelos.JugadorMaquina;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -32,13 +34,17 @@ public class DialogJuegoTerminado extends JDialog {
 			
 			this.initialize();
 			
-			if(jugador.isEsGanador()){
+			if(jugador instanceof JugadorHumano && jugador.isEsGanador()){
 				JLabel lblEstado = new JLabel("Gano! :)");
-				lblEstado.setBounds(10, 128, 46, 14);
+				lblEstado.setBounds(10, 128, 50, 14);
 				contentPanel.add(lblEstado);
-			} else {
+			} else if (jugador instanceof JugadorHumano && !jugador.isEsGanador()) {
 				JLabel lblEstado = new JLabel("Perdio! :(");
-				lblEstado.setBounds(10, 128, 46, 14);
+				lblEstado.setBounds(10, 128, 50, 14);
+				contentPanel.add(lblEstado);
+			} else if (jugador instanceof JugadorMaquina && jugador.isEsGanador()){
+				JLabel lblEstado = new JLabel("Gano " + jugador.getNombre());
+				lblEstado.setBounds(5, 128, 80, 14);
 				contentPanel.add(lblEstado);
 			}
 			

@@ -19,6 +19,8 @@ import javax.swing.border.LineBorder;
 
 import com.juegoahorcado.controladoras.ControladoraJuego;
 import com.juegoahorcado.modelos.Jugador;
+import com.juegoahorcado.modelos.JugadorHumano;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.FlowLayout;
@@ -26,6 +28,7 @@ import java.awt.FlowLayout;
 public class MenuJuego implements Observer {
 
 	private ControladoraJuego controladora;
+	private ArrayList<JButton> listaBotones;
 
 	private JFrame frame;
 	private JTextField tfNombreJugador;
@@ -65,6 +68,7 @@ public class MenuJuego implements Observer {
 	public MenuJuego(String nombre, int cantidadVidas) {
 		this.controladora = new ControladoraJuego(nombre, cantidadVidas, 3);
 		this.controladora.registrarEventoJuegoTerminado(this);
+		this.listaBotones = new ArrayList<>();
 		this.initialize();
 		this.frame.setVisible(true);
 	}
@@ -244,7 +248,7 @@ public class MenuJuego implements Observer {
 		// INSTANCIANDO PANELES
 		Jugador jugadorTemp = this.controladora.getJugador(0);
 		new PanelJugador(lblPalabra, tfJugador1, this.controladora.getCantidadLetrasDePalabra(), estadoTurnoJ,
-				jugadorTemp).update();
+				jugadorTemp, this.listaBotones).update();
 		tfNombreJugador.setText(jugadorTemp.getNombre());
 		
 		JPanel panel_7 = new JPanel();
@@ -252,6 +256,7 @@ public class MenuJuego implements Observer {
 		panelJugador.add(panel_7);
 		
 		JButton btnA = new JButton("A");
+		this.listaBotones.add(btnA);
 		btnA.setBounds(7, 5, 42, 23);
 		btnA.addMouseListener(new MouseAdapter() {
 			@Override
@@ -263,6 +268,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnA);
 		
 		JButton btnB = new JButton("B");
+		this.listaBotones.add(btnB);
 		btnB.setBounds(59, 5, 42, 23);
 		btnB.addMouseListener(new MouseAdapter() {
 			@Override
@@ -273,6 +279,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnB);
 		
 		JButton btnC = new JButton("C");
+		this.listaBotones.add(btnC);
 		btnC.setBounds(111, 5, 42, 23);
 		btnC.addMouseListener(new MouseAdapter() {
 			@Override
@@ -283,6 +290,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnC);
 		
 		JButton btnD = new JButton("D");
+		this.listaBotones.add(btnD);
 		btnD.setBounds(163, 5, 42, 23);
 		btnD.addMouseListener(new MouseAdapter() {
 			@Override
@@ -293,6 +301,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnD);
 		
 		JButton btnE = new JButton("E");
+		this.listaBotones.add(btnE);
 		btnE.setBounds(215, 5, 42, 23);
 		btnE.addMouseListener(new MouseAdapter() {
 			@Override
@@ -303,6 +312,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnE);
 		
 		JButton btnF = new JButton("F");
+		this.listaBotones.add(btnF);
 		btnF.setBounds(267, 5, 42, 23);
 		btnF.addMouseListener(new MouseAdapter() {
 			@Override
@@ -313,6 +323,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnF);
 		
 		JButton btnG = new JButton("G");
+		this.listaBotones.add(btnG);
 		btnG.setBounds(7, 33, 42, 23);
 		btnG.addMouseListener(new MouseAdapter() {
 			@Override
@@ -323,6 +334,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnG);
 		
 		JButton btnH = new JButton("H");
+		this.listaBotones.add(btnH);
 		btnH.setBounds(59, 33, 42, 23);
 		btnH.addMouseListener(new MouseAdapter() {
 			@Override
@@ -333,6 +345,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnH);
 		
 		JButton btnI = new JButton("I");
+		this.listaBotones.add(btnI);
 		btnI.setBounds(111, 33, 42, 23);
 		btnI.addMouseListener(new MouseAdapter() {
 			@Override
@@ -343,6 +356,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnI);
 		
 		JButton btnJ = new JButton("J");
+		this.listaBotones.add(btnJ);
 		btnJ.setBounds(163, 33, 42, 23);
 		btnJ.addMouseListener(new MouseAdapter() {
 			@Override
@@ -353,6 +367,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnJ);
 		
 		JButton btnK = new JButton("K");
+		this.listaBotones.add(btnK);
 		btnK.setBounds(215, 33, 42, 23);
 		btnK.addMouseListener(new MouseAdapter() {
 			@Override
@@ -363,6 +378,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnK);
 		
 		JButton btnL = new JButton("L");
+		this.listaBotones.add(btnL);
 		btnL.setBounds(267, 33, 42, 23);
 		btnL.addMouseListener(new MouseAdapter() {
 			@Override
@@ -373,6 +389,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnL);
 		
 		JButton btnM = new JButton("M");
+		this.listaBotones.add(btnM);
 		btnM.setBounds(7, 61, 42, 23);
 		btnM.addMouseListener(new MouseAdapter() {
 			@Override
@@ -383,6 +400,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnM);
 		
 		JButton btnN = new JButton("N");
+		this.listaBotones.add(btnN);
 		btnN.setBounds(59, 61, 42, 23);
 		btnN.addMouseListener(new MouseAdapter() {
 			@Override
@@ -393,6 +411,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnN);
 		
 		JButton btnO = new JButton("O");
+		this.listaBotones.add(btnO);
 		btnO.setBounds(111, 61, 42, 23);
 		btnO.addMouseListener(new MouseAdapter() {
 			@Override
@@ -403,6 +422,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnO);
 		
 		JButton btnP = new JButton("P");
+		this.listaBotones.add(btnP);
 		btnP.setBounds(163, 61, 42, 23);
 		btnP.addMouseListener(new MouseAdapter() {
 			@Override
@@ -413,6 +433,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnP);
 		
 		JButton btnQ = new JButton("Q");
+		this.listaBotones.add(btnQ);
 		btnQ.setBounds(215, 61, 42, 23);
 		btnQ.addMouseListener(new MouseAdapter() {
 			@Override
@@ -423,6 +444,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnQ);
 		
 		JButton btnR = new JButton("R");
+		this.listaBotones.add(btnR);
 		btnR.setBounds(267, 61, 42, 23);
 		btnR.addMouseListener(new MouseAdapter() {
 			@Override
@@ -433,6 +455,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnR);
 		
 		JButton btnS = new JButton("S");
+		this.listaBotones.add(btnS);
 		btnS.setBounds(7, 89, 42, 23);
 		btnS.addMouseListener(new MouseAdapter() {
 			@Override
@@ -443,6 +466,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnS);
 		
 		JButton btnT = new JButton("T");
+		this.listaBotones.add(btnT);
 		btnT.setBounds(59, 89, 42, 23);
 		btnT.addMouseListener(new MouseAdapter() {
 			@Override
@@ -453,6 +477,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnT);
 		
 		JButton btnU = new JButton("U");
+		this.listaBotones.add(btnU);
 		btnU.setBounds(111, 89, 42, 23);
 		btnU.addMouseListener(new MouseAdapter() {
 			@Override
@@ -463,6 +488,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnU);
 		
 		JButton btnV = new JButton("V");
+		this.listaBotones.add(btnV);
 		btnV.setBounds(163, 89, 42, 23);
 		btnV.addMouseListener(new MouseAdapter() {
 			@Override
@@ -473,6 +499,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnV);
 		
 		JButton btnW = new JButton("W");
+		this.listaBotones.add(btnW);
 		btnW.setBounds(215, 89, 42, 23);
 		btnW.addMouseListener(new MouseAdapter() {
 			@Override
@@ -483,6 +510,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnW);
 		
 		JButton btnX = new JButton("X");
+		this.listaBotones.add(btnX);
 		btnX.setBounds(267, 89, 42, 23);
 		btnX.addMouseListener(new MouseAdapter() {
 			@Override
@@ -493,6 +521,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnX);
 		
 		JButton btnY = new JButton("Y");
+		this.listaBotones.add(btnY);
 		btnY.setBounds(111, 117, 42, 23);
 		btnY.addMouseListener(new MouseAdapter() {
 			@Override
@@ -503,6 +532,7 @@ public class MenuJuego implements Observer {
 		panel_7.add(btnY);
 		
 		JButton btnZ = new JButton("Z");
+		this.listaBotones.add(btnZ);
 		btnZ.setBounds(163, 117, 42, 23);
 		btnZ.addMouseListener(new MouseAdapter() {
 			@Override
@@ -543,6 +573,7 @@ public class MenuJuego implements Observer {
 		if (!btn.isEnabled())
 			return;
 		
+		this.listaBotones.remove(btn);
 		btn.setEnabled(false);
 		this.controladora.setEntradaPersonaje(btn.getText().charAt(0));
 	}
@@ -570,14 +601,18 @@ public class MenuJuego implements Observer {
 
 		private Jugador jugador = null;
 		private String palabra = "";
+		
+		private ArrayList<JButton> listaBotones;
 
 		public PanelJugador(JLabel lblLetrasCompletas, JTextField tfVida, int cantidadLetras, Canvas canvas,
-				Jugador jugador) {
+				Jugador jugador, ArrayList<JButton> lista) {
 			this.jugador = jugador;
 			this.jugador.addObserver(this);
 			this.tfVida = tfVida;
 
 			this.canvas = canvas;
+			
+			this.listaBotones = lista;
 
 			this.lblLetrasCompletas = lblLetrasCompletas;
 			// cargar palabra
@@ -623,10 +658,21 @@ public class MenuJuego implements Observer {
 
 			this.tfVida.setText(String.valueOf(this.jugador.getVidas()));
 
-			if (this.jugador.isEsMiTurno())
+			if (this.jugador.isEsMiTurno()) {
 				canvas.setBackground(Color.GREEN);
-			else
+				if(this.listaBotones != null){
+					for(int i =0; i<this.listaBotones.size(); i++){
+						this.listaBotones.get(i).setEnabled(true);
+					}
+				}
+		} else {
 				canvas.setBackground(Color.RED);
+				if(this.listaBotones != null){
+					for(int i =0; i<this.listaBotones.size(); i++){
+						this.listaBotones.get(i).setEnabled(false);
+					}
+				}
+			}
 		}
 	}
 
@@ -634,7 +680,7 @@ public class MenuJuego implements Observer {
 
 		public PanelJugadorMaquina(JLabel lblLetrasCompletas, JTextField tfVida, int cantidadLetras, Canvas canvas,
 				Jugador jugador) {
-			super(lblLetrasCompletas, tfVida, cantidadLetras, canvas, jugador);
+			super(lblLetrasCompletas, tfVida, cantidadLetras, canvas, jugador, null);
 		}
 
 		/* (non-Javadoc)

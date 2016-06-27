@@ -15,6 +15,7 @@ public class MenuPrincipal {
 	
 	private JFrame frame;
 	private JTextField tfNombreJugador;
+	private JTextField tfVidas;
 
 	/**
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class MenuPrincipal {
 				onClickButtonNuevoJuego();
 			}
 		});
-		btnNuevoJuego.setBounds(154, 69, 125, 23);
+		btnNuevoJuego.setBounds(154, 98, 125, 23);
 		frame.getContentPane().add(btnNuevoJuego);
 		
 		JButton btnEstadisticas = new JButton("Estadisticas");
@@ -64,7 +65,7 @@ public class MenuPrincipal {
 				onClickButtonEstadisticas();
 			}
 		});
-		btnEstadisticas.setBounds(154, 103, 125, 23);
+		btnEstadisticas.setBounds(154, 132, 125, 23);
 		frame.getContentPane().add(btnEstadisticas);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -73,7 +74,7 @@ public class MenuPrincipal {
 				onClickButtonSalir();
 			}
 		});
-		btnSalir.setBounds(154, 171, 125, 23);
+		btnSalir.setBounds(154, 200, 125, 23);
 		frame.getContentPane().add(btnSalir);
 		
 		JButton btnPalabras = new JButton("Palabras");
@@ -82,7 +83,7 @@ public class MenuPrincipal {
 				onClickButtonPalabras();
 			}
 		});
-		btnPalabras.setBounds(154, 137, 125, 23);
+		btnPalabras.setBounds(154, 166, 125, 23);
 		frame.getContentPane().add(btnPalabras);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -93,16 +94,33 @@ public class MenuPrincipal {
 		tfNombreJugador.setBounds(210, 41, 69, 20);
 		frame.getContentPane().add(tfNombreJugador);
 		tfNombreJugador.setColumns(10);
+		
+		JLabel lblVidas = new JLabel("Vidas:");
+		lblVidas.setBounds(154, 69, 46, 14);
+		frame.getContentPane().add(lblVidas);
+		
+		tfVidas = new JTextField();
+		tfVidas.setBounds(210, 67, 69, 20);
+		frame.getContentPane().add(tfVidas);
+		tfVidas.setColumns(10);
 	}
 
 	
 	// ------------------------- ONCLICK BUTTON --------------------------------------------
 	private void onClickButtonNuevoJuego () {
 		if(!tfNombreJugador.getText().isEmpty()){
-		new MenuJuego(tfNombreJugador.getText(), 5);
-		this.frame.setVisible(false);
+			try{
+				if(!tfVidas.getText().isEmpty() && Integer.parseInt(tfVidas.getText())>0){
+					new MenuJuego(tfNombreJugador.getText(), Integer.parseInt(tfVidas.getText()));
+					this.frame.setVisible(false);
+				} else {
+					JOptionPane.showMessageDialog(null, "No ingreso una cantidad de vidas valida.");
+				}
+			}catch (NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "Lo que ingreso no es un numero valido.");
+			}
 		} else {
-			JOptionPane.showMessageDialog(null, "No ingreso un nombre valido");
+			JOptionPane.showMessageDialog(null, "No ingreso un nombre valido.");
 		}
 	}
 	
