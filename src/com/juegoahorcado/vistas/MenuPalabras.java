@@ -135,11 +135,11 @@ public class MenuPalabras {
 
 	private void onClickNuevo() {
 		if (!this.isModificar) {
-			String palabra = this.tfNombre.getText();
+			String palabra = this.tfNombre.getText().toUpperCase();
 			
 			this.controladora.guardar(this.controladora.nuevaPalabra(palabra));
 		} else {
-			String palabra = this.tfNombre.getText();
+			String palabra = this.tfNombre.getText().toUpperCase();
 			int id = (int) table.getValueAt(table.getSelectedRow(), 0);
 			this.controladora.modificar(id, palabra);
 

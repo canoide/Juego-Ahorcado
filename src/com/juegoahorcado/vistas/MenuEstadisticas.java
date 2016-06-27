@@ -1,6 +1,7 @@
 package com.juegoahorcado.vistas;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
@@ -19,8 +20,12 @@ import java.awt.event.ActionEvent;
 
 public class MenuEstadisticas {
 
+	ControladoraEstadistica controladoraE;
+	
 	private JFrame frmEstadisticas;
 	private JTable table;
+	
+	DefaultTableModel tableModel = new DefaultTableModel(new Object[][] {},new String[] {"id de partida", "Fecha de la partida", "Nombre", "Estado"});
 
 	/**
 	 * Launch the application.
@@ -45,6 +50,10 @@ public class MenuEstadisticas {
 		initialize();
 		this.frmEstadisticas.setVisible(true);
 		this.init();
+		
+		controladoraE = new ControladoraEstadistica();
+		
+		actualizarTabla();
 	}
 
 	/**
@@ -72,13 +81,7 @@ public class MenuEstadisticas {
 		frmEstadisticas.getContentPane().add(scrollPane);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre", "Cantidad Acertadas", "Cantidad Errores", "Cantidad Perdidas", "Cantidad Ganadas"
-			}
-		));
+		table.setModel(tableModel);
 		table.getColumnModel().getColumn(0).setPreferredWidth(109);
 		table.getColumnModel().getColumn(0).setMinWidth(25);
 		scrollPane.setViewportView(table);
@@ -135,6 +138,41 @@ public class MenuEstadisticas {
 			Object[] objects = (Object[]) e.nextElement();
 			tableModel.addRow(objects);
 		}
+	}
+	
+	private void actualizarTabla(){
+		if (this.table.getRowCount() > 0)
+			this.limpiarTabla();
+		
+		List<Estadistica> listaEstadisticas = this.controladoraE.obtenerTodos();
+		
+		Object[] linea = new Object[4];
+		for(int i=0;i<listaEstadisticas.size(); i++){
+			linea[0] = listaEstadisticas.get(i).getId();
+			linea[1] = listaEstadisticas.get(i).getFecha();
+			
+			List<DetalleJugador> detalle = new ArrayList<DetalleJugador>();
+			detalle = listaEstadisticas.get(i).getListaDetalles();
+			
+			for (int j=0; j<detalle.size();j++){
+				if(!detalle.get(j).getNombreJugador().equals("Maquina 1") && !detalle.get(j).getNombreJugador().equals("Maquina 2") && !detalle.get(j).getNombreJugador().equals("Maquina 3")){
+					linea[2] = detalle.get(j).getNombreJugador();
+					if(detalle.get(j).getEsGanador()){
+						linea[3] = "Gano";
+					}else{
+						linea[3] = "Perdio";
+					}
+				}
+			}
+			
+			tableModel.addRow(linea);
+		}
+		
+	}
+	
+	private void limpiarTabla() {
+		while (this.tableModel.getRowCount() > 0)
+			this.tableModel.removeRow(0);
 	}
 	
 	private void onClickMenuPrincipal() {
